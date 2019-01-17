@@ -9,12 +9,14 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score
 
 ## Define argument parser with the following args:
-## filepath, classifier, --normalize
+## filepath: a string containing the path to the file
+## classifier: a string from ["logreg","svm","rf"] - type of classifier
+## -n,--normalize: flag indicating whether to normalize the features or not
 
 
 ## Load the csv file using numpy's genfromtxt
 ## with the following args
-## delimiter=",",names=None,skip_header=1
+## delimiter=",",names=None,skip_header=0
 
 
 ## Extract features and labels. Assume that the last
