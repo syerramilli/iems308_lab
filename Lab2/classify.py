@@ -10,18 +10,18 @@ from sklearn.metrics import accuracy_score
 
 ## Define argument parser with the following args:
 ## filepath: a string containing the path to the file
+## header: binary variable ([0,1]) indicating whether the csv file has a header
 ## classifier: a string from ["logreg","svm","rf"] - type of classifier
 ## -n,--normalize: flag indicating whether to normalize the features or not
 
 
 ## Load the csv file using numpy's genfromtxt
 ## with the following args
-## delimiter=",",names=None,skip_header=0
+## delimiter=",",names=None,skip_header=args.header
 
 
-## Extract features and labels. Assume that the last
-## column contains the labels. Also assume all data
-## is of numerical type
+## Extract features and labels. Assume that the last column contains the labels. 
+## Also assume all columns are of numerical type
 ## Eg:
 ## X = dat[:,:-1]
 ## y = dat[:,-1]
@@ -48,11 +48,10 @@ clf.fit(X_scaled,y)
 
 ## Compute and print training score
 ## Use accuracy_score
-## print("Training accuracy of {}: {}".format(classifier,_))
+## print("Training accuracy of {}: {}".format(args.classifier,_))
 
 
 ## Save the object to disk using pickle
-## Modify the out directory using os.path.join
-## if you want a different directory
-with open(classifier+".pkl",'wb') as f:
+## Modify the out directory using os.path.join if you want a different directory
+with open(classifier+"_"+ dataset +".pkl",'wb') as f:
 	pickle.dump(clf,f)
